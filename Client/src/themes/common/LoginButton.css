@@ -1,0 +1,31 @@
+.login-btn {
+  background: rgb(32, 129, 226);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover {
+  background: rgb(24, 104, 183);
+}
+
+.login-btn:active {
+  transform: translateY(1px);
+}
+
+.login-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.login-btn:hover svg {
+  transform: translateX(2px);
+}
