@@ -1,12 +1,22 @@
 import React from "react";
-import { useLoginModal } from "../../auth/useLoginModal";
 import MetaMaskIcon from "../../assets/metamask-icon.svg";
-import "./LoginModal.css";
+import "../../themes/UI/modals/LoginModal.css";
 
-const LoginModal: React.FC = () => {
-  const { isOpen, closeModal, handleConnect, isConnecting, error } =
-    useLoginModal();
+interface LoginModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConnect: () => Promise<void>;
+  isConnecting: boolean;
+  error: string | null;
+}
 
+const LoginModal: React.FC<LoginModalProps> = ({
+  isOpen,
+  onClose,
+  onConnect,
+  isConnecting,
+  error,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -14,7 +24,7 @@ const LoginModal: React.FC = () => {
       <div className="modal-container">
         <div className="modal-header">
           <h2>Connect to Junkyard Dogs</h2>
-          <button className="close-button" onClick={closeModal}>
+          <button className="close-button" onClick={onClose}>
             ×
           </button>
         </div>
@@ -22,7 +32,7 @@ const LoginModal: React.FC = () => {
         <div className="modal-content">
           <button
             className="wallet-option"
-            onClick={handleConnect}
+            onClick={onConnect}
             disabled={isConnecting}
           >
             <img src={MetaMaskIcon} alt="MetaMask" className="wallet-icon" />
