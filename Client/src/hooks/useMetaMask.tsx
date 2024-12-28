@@ -32,7 +32,8 @@ export const useMetaMask = (): MetaMaskState => {
       await provider.send("eth_requestAccounts", []);
       const signer = await provider.getSigner();
       const address = await signer.getAddress();
-      setAccount(address);
+      setAccount(address); // Verify this is being called
+      console.log("Connected account:", address); // Add this debug log
     } catch {
       setError("Failed to connect wallet");
     } finally {

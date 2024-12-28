@@ -21,6 +21,8 @@ const App = () => {
     error: modalError,
   } = useLoginModal();
 
+  console.log("Current account state:", account); // Add this debug log
+
   return (
     <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
       <div className="card shadow-sm" style={{ maxWidth: "400px" }}>
@@ -31,7 +33,9 @@ const App = () => {
           {!account ? (
             <LoginButton openModal={openModal} />
           ) : (
-            <div className="alert alert-success">Connected: {account}</div>
+            <div className="alert alert-success">
+              Connected: {account.slice(0, 6)}...{account.slice(-4)}
+            </div>
           )}
           {metamaskError && (
             <div className="alert alert-danger mt-3">{metamaskError}</div>
