@@ -1,55 +1,99 @@
-import { useState } from "react";
+import { useEffect, useReducer } from "react";
 import { ethers } from "ethers";
 
-interface MetaMaskState {
+type MetaMaskState = {
   account: string | null;
   loading: boolean;
   error: string | null;
-  connectWallet: () => Promise<void>;
-  disconnectWallet: () => void;
-}
+};
 
-declare global {
-  interface Window {
-    ethereum?: ethers.Eip1193Provider;
+type MetaMaskAction =
+  | { type: "START_CONNECT" }
+  | { type: "CONNECTION_SUCCESSFUL"; payload: string }
+  | { type: "CONNECTION_FAILED"; payload: string }
+  | { type: "DISCONNECT" };
+
+const initialState: MetaMaskState = {
+  account: null,
+  loading: false,
+  error: null,
+};
+
+function metamaskReducer(
+  state: MetaMaskState,
+  action: MetaMaskAction
+): MetaMaskState {
+  switch (action.type) {
+    case "START_CONNECT":
+      return { ...state, loading: true, error: null };
+    case "CONNECTION_SUCCESSFUL":
+      return { ...state, loading: false, account: action.payload, error: null };
+    case "CONNECTION_FAILED":
+      return { ...state, loading: false, error: action.payload };
+    case "DISCONNECT":
+      return { ...state, account: null, error: null };
+    default:
+      return state;
   }
 }
 
-export const useMetaMask = (): MetaMaskState => {
-  const [account, setAccount] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+export const useMetaMask = () => {
+  const [state, dispatch] = useReducer(metamaskReducer, initialState);
+
+  // Check if already connected on mount/refresh
+  useEffect(() => {
+    const checkConnection = async () => {
+      if (window.ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        try {
+          const accounts = await provider.listAccounts();
+          if (accounts.length > 0) {
+            dispatch({
+              type: "CONNECTION_SUCCESSFUL",
+              payload: accounts[0].address,
+            });
+          }
+        } catch (error) {
+          console.error("Error checking connection:", error);
+        }
+      }
+    };
+    checkConnection();
+  }, []);
 
   const connectWallet = async (): Promise<void> => {
+    dispatch({ type: "START_CONNECT" });
+
     if (!window.ethereum) {
-      setError("Please install MetaMask");
+      dispatch({
+        type: "CONNECTION_FAILED",
+        payload: "Please install MetaMask",
+      });
       return;
     }
 
-    setLoading(true);
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       await provider.send("eth_requestAccounts", []);
       const signer = await provider.getSigner();
       const address = await signer.getAddress();
-      setAccount(address); // Verify this is being called
-      console.log("Connected account:", address); // Add this debug log
-    } catch {
-      setError("Failed to connect wallet");
-    } finally {
-      setLoading(false);
+      console.log("Connecting wallet:", address);
+      dispatch({ type: "CONNECTION_SUCCESSFUL", payload: address });
+    } catch (error) {
+      console.error("Connection error:", error);
+      dispatch({
+        type: "CONNECTION_FAILED",
+        payload: "Failed to connect wallet",
+      });
     }
   };
 
-  const disconnectWallet = (): void => {
-    setAccount(null);
-    setError(null);
+  const disconnectWallet = () => {
+    dispatch({ type: "DISCONNECT" });
   };
 
   return {
-    account,
-    loading,
-    error,
+    ...state,
     connectWallet,
     disconnectWallet,
   };

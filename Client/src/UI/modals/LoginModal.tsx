@@ -1,5 +1,5 @@
 import React from "react";
-import MetaMaskIcon from "../../assets/metamask-icon.svg";
+import MetaMaskIcon from "../../assets/metamask-icon.tsx";
 import "../../themes/UI/modals/LoginModal.css";
 
 interface LoginModalProps {
@@ -17,6 +17,11 @@ const LoginModal: React.FC<LoginModalProps> = ({
   isConnecting,
   error,
 }) => {
+  const handleConnect = async () => {
+    await onConnect();
+    onClose(); // Close modal after successful connection
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -28,18 +33,16 @@ const LoginModal: React.FC<LoginModalProps> = ({
             ×
           </button>
         </div>
-
         <div className="modal-content">
           <button
             className="wallet-option"
-            onClick={onConnect}
+            onClick={handleConnect}
             disabled={isConnecting}
           >
-            <img src={MetaMaskIcon} alt="MetaMask" className="wallet-icon" />
+            <MetaMaskIcon />
             <span>MetaMask</span>
             <span className="last-used">Last Used</span>
           </button>
-
           {error && <div className="error-message">{error}</div>}
         </div>
       </div>

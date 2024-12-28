@@ -29,3 +29,34 @@
 .login-btn:hover svg {
   transform: translateX(2px);
 }
+
+.connected-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(32, 129, 226);
+  padding: 8px 12px;
+  border-radius: 12px;
+  color: white;
+}
+
+.address {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.copy-button:hover {
+  opacity: 1;
+}
