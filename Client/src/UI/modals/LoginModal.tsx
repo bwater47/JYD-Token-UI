@@ -10,6 +10,18 @@ interface LoginModalProps {
   error: string | null;
 }
 
+/**
+ * LoginModal component renders a modal for connecting to Junkyard Dogs.
+ *
+ * @param {boolean} isOpen - Determines if the modal is open.
+ * @param {() => void} onClose - Function to close the modal.
+ * @param {() => Promise<void>} onConnect - Function to handle the connection process.
+ * @param {boolean} isConnecting - Indicates if the connection process is ongoing.
+ * @param {string} [error] - Optional error message to display if the connection fails.
+ *
+ * @returns {JSX.Element | null} The rendered modal component or null if the modal is not open.
+ */
+
 const LoginModal: React.FC<LoginModalProps> = ({
   isOpen,
   onClose,

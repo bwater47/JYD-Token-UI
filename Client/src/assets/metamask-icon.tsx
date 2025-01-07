@@ -1,3 +1,4 @@
+// SVG Asset for MetaMask Modal UI
 import React from "react";
 
 const MetaMaskIcon: React.FC = () => (

@@ -30,6 +30,26 @@ const formatNFTData = (nft: OwnedNft): NFTMetadata => {
   };
 };
 
+/**
+ * Custom hook to fetch NFTs for a given account.
+ *
+ * @param {string | null} account - The account address to fetch NFTs for.
+ * @returns {Object} An object containing:
+ * - `collections`: A state object representing the fetched NFT collections.
+ * - `loading`: A boolean indicating whether the data is currently being fetched.
+ *
+ * @example
+ * const { collections, loading } = useNFTs(account);
+ *
+ * @remarks
+ * This hook uses the Alchemy API to fetch NFTs for the provided account address.
+ * It iterates over a predefined set of contract addresses (excluding the "STAKING" contract)
+ * and fetches the NFTs owned by the account for each contract.
+ * The fetched NFTs are then formatted and stored in the `collections` state.
+ *
+ * @throws Will log an error to the console if fetching NFTs fails for any contract.
+ */
+
 const useNFTs = (account: string | null) => {
   const [collections, setCollections] = useState<CollectionsState>({});
   const [loading, setLoading] = useState(false);

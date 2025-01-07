@@ -1,14 +1,10 @@
-// Haven't added pages however adding an index.html at root of client directory, and setting up
-// routing inside of the main.jsx
-// then connecting the scripts path to the index.html file
-// then configuring the vite setup to match the IP of the backend
-// will achieve a connection to a backend repo with a server deployed (production/staging) or a server directory in the same repo.
+// TODO: Changing to be the app router/adding pages to router*
 
 import { useState } from "react";
 import LoginButton from "./components/common/LoginButton";
 import LoginModal from "./UI/modals/LoginModal";
 import { useMetaMask } from "./hooks/useMetaMask";
-import NFTGallery from "./components/NFTGallery";
+import NFTGallery from "./components/features/NFT/NFTGallery";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
