@@ -59,6 +59,36 @@ export const useMetaMask = () => {
       }
     };
     checkConnection();
+    if (window.ethereum) {
+      window.ethereum.on?.("accountsChanged", (accounts: string[]) => {
+        if (accounts.length === 0) {
+          dispatch({ type: "DISCONNECT" });
+        } else {
+          dispatch({
+            type: "CONNECTION_SUCCESSFUL",
+            payload: accounts[0],
+          });
+        }
+      });
+    }
+
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener?.(
+          "accountsChanged",
+          (accounts: string[]) => {
+            if (accounts.length === 0) {
+              dispatch({ type: "DISCONNECT" });
+            } else {
+              dispatch({
+                type: "CONNECTION_SUCCESSFUL",
+                payload: accounts[0],
+              });
+            }
+          }
+        );
+      }
+    };
   }, []);
 
   const connectWallet = async (): Promise<void> => {
