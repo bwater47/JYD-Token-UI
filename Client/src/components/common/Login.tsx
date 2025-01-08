@@ -7,14 +7,9 @@ interface LoginButtonProps {
 }
 
 /**
- * LoginButton component renders a button that either shows the connected account address
- * with a copy-to-clipboard functionality or a login button if no account is connected.
- *
- * @param {Object} props - The properties object.
- * @param {string} props.account - The connected account address.
- * @param {() => void} props.onLogin - The function to call when the login button is clicked.
- *
- * @returns {JSX.Element} The rendered LoginButton component.
+ * Renders a button that handles wallet connection status
+ * @param account Connected wallet address
+ * @param onLogin Callback function for login action
  */
 
 const LoginButton: React.FC<LoginButtonProps> = ({ account, onLogin }) => {

@@ -8,15 +8,8 @@ interface NFTCardProps {
 /**
  * Component representing an NFT card.
  *
- * @component
- * @param {NFTCardProps} props - The properties for the NFTCard component.
- * @param {Object} props.nft - The NFT data to display.
- * @param {string} props.nft.image - The URL of the NFT image.
- * @param {string} props.nft.title - The title of the NFT.
- * @param {Array} props.nft.attributes - The attributes of the NFT.
- * @param {string} props.nft.attributes[].trait_type - The type of the attribute.
- * @param {string | number} props.nft.attributes[].value - The value of the attribute.
- * @returns {JSX.Element} The rendered NFT card component.
+ * @param props - The properties for the NFTCard component.
+ * @returns The rendered NFT card component.
  */
 
 export const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {

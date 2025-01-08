@@ -1,4 +1,10 @@
-import { ethers } from "ethers";
+import { Interface, ethers } from "ethers";
+
+/**
+ * Gets the Ethereum provider instance from the user's MetaMask wallet.
+ * @returns {ethers.BrowserProvider} The Ethereum provider instance.
+ * @throws {Error} If MetaMask is not installed.
+ */
 
 export const getProvider = () => {
   if (!window.ethereum) {
@@ -7,15 +13,25 @@ export const getProvider = () => {
   return new ethers.BrowserProvider(window.ethereum);
 };
 
-export const getContract = (contractAddress: string, abi: any) => {
+/**
+ * Creates an Ethers.js contract instance for the specified contract address and ABI.
+ * @param {string} contractAddress - The contract address.
+ * @param {Interface} abi - The contract ABI.
+ * @returns {ethers.Contract} The Ethers.js contract instance.
+ */
+
+export const getContract = (contractAddress: string, abi: Interface) => {
   const provider = getProvider();
   return new ethers.Contract(contractAddress, abi, provider);
 };
 
-// Common blockchain interactions
+/**
+ * Retrieves the Ethereum balance for the specified address.
+ * @param {string} address - The Ethereum address.
+ * @returns {Promise<ethers.BigNumber>} The Ethereum balance.
+ */
+
 export const getBalance = async (address: string) => {
   const provider = getProvider();
   return await provider.getBalance(address);
 };
-
-// Add more generic ethers.js utility functions

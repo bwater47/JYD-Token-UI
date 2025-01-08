@@ -7,6 +7,11 @@ type MetaMaskState = {
   error: string | null;
 };
 
+/**
+ * Manages MetaMask wallet connection state
+ * @returns Wallet connection state and control functions
+ */
+
 type MetaMaskAction =
   | { type: "START_CONNECT" }
   | { type: "CONNECTION_SUCCESSFUL"; payload: string }
@@ -38,34 +43,10 @@ function metamaskReducer(
 }
 
 /**
- * Custom hook to manage MetaMask connection state.
- *
- * @returns {Object} The state and functions to connect and disconnect the MetaMask wallet.
- * @returns {boolean} state.isConnected - Indicates if the wallet is connected.
- * @returns {string} state.address - The connected wallet address.
- * @returns {string} state.error - Error message if connection fails.
- * @returns {Function} connectWallet - Function to initiate connection to MetaMask.
- * @returns {Function} disconnectWallet - Function to disconnect the MetaMask wallet.
- *
- * @example
- * const { isConnected, address, error, connectWallet, disconnectWallet } = useMetaMask();
- *
- * useEffect(() => {
- *   if (isConnected) {
- *     console.log(`Connected to wallet: ${address}`);
- *   }
- * }, [isConnected, address]);
- *
- * return (
- *   <div>
- *     {isConnected ? (
- *       <button onClick={disconnectWallet}>Disconnect</button>
- *     ) : (
- *       <button onClick={connectWallet}>Connect MetaMask</button>
- *     )}
- *     {error && <p>{error}</p>}
- *   </div>
- * );
+ * Processes MetaMask state changes
+ * @param state Current MetaMask state
+ * @param action Action to process
+ * @returns Updated MetaMask state
  */
 
 export const useMetaMask = () => {

@@ -4,6 +4,13 @@ import {
   RawAttribute,
 } from "../../types/components/nft";
 
+/**
+ * Formats the NFT data into a standardized metadata structure.
+ *
+ * @param {OwnedNft} nft - The NFT object to format.
+ * @returns {NFTMetadata} The formatted NFT metadata.
+ */
+
 export const formatNFTData = (nft: OwnedNft): NFTMetadata => {
   const attributes = (nft.rawMetadata?.attributes || []) as RawAttribute[];
 

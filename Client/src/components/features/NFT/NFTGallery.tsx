@@ -1,21 +1,11 @@
 import { NFTCard } from "../../../UI/features/NFTCard";
 import { useMetaMask } from "../../../hooks/useMetaMask";
 import useNFTs from "../../../hooks/useNFTs";
-import "../../../styles/components/features/NFT/NFTGallery.css"
+import "../../../styles/components/features/NFT/NFTGallery.css";
 
 /**
- * @file NFTGallery.tsx
- * @description This component displays a gallery of NFTs grouped by collections. It uses MetaMask to get the user's account and a custom hook to fetch the NFTs associated with that account.
- */
-
-/**
- * NFTGallery component
- *
- * This component fetches and displays NFTs from different collections associated with the user's MetaMask account.
- * It shows a loading message while the data is being fetched and displays the NFTs in a card layout once loaded.
- * If no NFTs are found, it shows a message indicating that no JunkYard NFTs were found in the wallet.
- *
- * @returns {JSX.Element} The rendered NFT gallery component.
+ * Displays NFT gallery component
+ * Fetches and renders NFTs from connected wallet grouped by collections
  */
 
 const NFTGallery = () => {
