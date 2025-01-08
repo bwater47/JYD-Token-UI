@@ -14,52 +14,86 @@ A Web3 interface for interacting with Junkyard Dogs NFT collections, built with 
 - **Problem Solved:** Simplifies the interaction with blockchain assets through an intuitive interface.
 - **Learning Outcomes:** Gained experience with Web3 technologies, React hooks pattern, and TypeScript.
 
-## Key Files Structure
+## Project Structure
 
-### Core Components
-- `App.tsx`: Main application component
-- `LoginButton.tsx`: MetaMask connection button component
-- `LoginModal.tsx`: Modal for wallet connection
+### Root
+- Client/
+  - src/
+    - abis/               # Smart contract ABIs
+      - StakerABI.ts
+    - components/
+      - common/          # Shared components
+        - Login.tsx
+      - features/NFT/    # NFT-related components
+        - NFTCard.tsx
+        - NFTGallery.tsx
+      - layout/          # Layout components
+        - Footer.tsx
+        - Header.tsx
+    - contracts/         # Smart contract interactions
+      - StakerContract.ts
+    - hooks/            # Custom React hooks
+      - useMetaMask.tsx
+      - useNFTs.tsx
+    - pages/           # Page components
+      - Home.tsx
+    - services/        # External integrations
+      - alchemyService.ts
+      - etherService.ts
+    - styles/          # Styling
+      - components/    # Component-specific styles
+        - common/
+          - Login.css
+        - features/NFT/
+          - NFTCard.css
+          - NFTGallery.css
+        - layout/
+          - Footer.css
+          - Header.css
+      - Theme.css     # Global theme styles
+    - utils/
+      - constants/    # Application constants
+        - contracts.ts
+      - formatters/   # Formatting utilities
+        - nftFormatters.ts
+  - .env.dev         # Development environment variables
+  - .env.prod        # Production environment variables
+  - .env.stage       # Staging environment variables
+  - package.json     # Project dependencies and scripts
 
-### Features
-- `NFTGallery.tsx`: Displays user's NFT collections
-- `NFTCard.tsx`: Individual NFT display component
-- `NetworkSwap.tsx`: Network switching functionality
-
-### Hooks
-- `useMetaMask.tsx`: MetaMask connection state management
-- `useNFTs.tsx`: NFT data fetching and management
-- `useLoginModal.tsx`: Modal state management
-
-### Utils
-- `EtherAPI.tsx`: Ethereum RPC interaction utilities
-- `helpers.tsx`: Common utility functions
-
-### Themes
-- `/components`: Component-specific styles
-- `/features`: Feature-specific styles
-- `/layout`: Layout-specific styles
+### Key Directories
+- `/abis`: Smart contract ABIs for blockchain interaction
+- `/components`: Reusable UI components organized by feature and common use
+- `/contracts`: Smart contract interaction layer
+- `/hooks`: Custom React hooks for state management and business logic
+- `/services`: External service integrations (Alchemy, Ethereum)
+- `/styles`: CSS modules organized to mirror component structure
+- `/utils`: Helper functions, constants, and formatting utilities
 
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone [repository-url]
 ```
 
 2. Install dependencies:
+
 ```bash
 cd JYD-Token-UI
 npm install
 ```
 
 3. Create a .env file with:
+
 ```
 VITE_ALCHEMY_API_KEY=your_api_key
 RPC_PROVIDER_URL=your_rpc_url
 ```
 
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
