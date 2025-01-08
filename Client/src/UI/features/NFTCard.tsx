@@ -1,4 +1,5 @@
 import { NFTMetadata } from "../../types/components/nft";
+import "../../styles/UI/features/NFTCard.css";
 
 interface NFTCardProps {
   nft: NFTMetadata;
@@ -19,6 +20,11 @@ interface NFTCardProps {
  */
 
 export const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {
+  if (!nft.image) {
+    console.warn("NFT missing image:", nft);
+    return null;
+  }
+
   return (
     <div className="card h-100">
       <img

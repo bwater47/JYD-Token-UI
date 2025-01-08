@@ -1,5 +1,5 @@
 import React from "react";
-import "../../themes/components/common/LoginButton.css";
+import "../../styles/components/common/Login.css";
 
 interface LoginButtonProps {
   account: string | null;

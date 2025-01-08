@@ -1,6 +1,6 @@
 import React from "react";
 import MetaMaskIcon from "../../assets/metamask-icon.tsx";
-import "../../themes/UI/modals/LoginModal.css";
+import "../../styles/UI/modals/LoginModal.css";
 
 interface LoginModalProps {
   isOpen: boolean;

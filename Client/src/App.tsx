@@ -1,37 +1,15 @@
-// TODO: Changing to be the app router/adding pages to router*
-
-import { useState } from "react";
-import LoginButton from "./components/common/LoginButton";
-import LoginModal from "./UI/modals/LoginModal";
-import { useMetaMask } from "./hooks/useMetaMask";
-import NFTGallery from "./components/features/NFT/NFTGallery";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Outlet } from "react-router";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { account, loading, error, connectWallet } = useMetaMask();
-
   return (
-    <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
-      <div
-        className="card shadow-sm"
-        style={{ maxWidth: account ? "800px" : "400px" }}
-      >
-        <div className="card-header">
-          <h5 className="card-title mb-0">JYD Token Interface</h5>
-        </div>
-        <div className="card-body">
-          <LoginButton account={account} onLogin={() => setIsModalOpen(true)} />
-          {account && <NFTGallery />}
-        </div>
-      </div>
-      <LoginModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onConnect={connectWallet}
-        isConnecting={loading}
-        error={error}
-      />
+    <div className="app-container">
+      <Header />
+      <main className="main-content">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };

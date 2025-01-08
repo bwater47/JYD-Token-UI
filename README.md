@@ -90,12 +90,4 @@ npm run dev
 
 ## License
 
-This project is not licensed do not fork unless given specific authority.
-
-## Acknowledgments
-
-- Ethers.js documentation -- adding*
-- MetaMask API documentation -- adding*
-- React documentation -- adding*
-- Vite documentation -- adding*
-- TypeScript documentation -- adding*
+N/A
