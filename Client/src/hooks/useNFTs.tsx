@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CollectionsState } from "../types/components/nft";
-import { fetchNFTsForAccount } from "../utils/services/alchemyService";
+import { fetchNFTsForAccount } from "../services/alchemyService";
 
 const useNFTs = (account: string | null) => {
   const [collections, setCollections] = useState<CollectionsState>({});

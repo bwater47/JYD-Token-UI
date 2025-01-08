@@ -1,5 +1,5 @@
 import { Interface, ethers } from "ethers";
-
+// import { StakerABI } from "../abis/StakerABI";
 /**
  * Gets the Ethereum provider instance from the user's MetaMask wallet.
  * @returns {ethers.BrowserProvider} The Ethereum provider instance.
@@ -35,3 +35,22 @@ export const getBalance = async (address: string) => {
   const provider = getProvider();
   return await provider.getBalance(address);
 };
+
+// Function to interact with the Staker contract and get staked tokens
+// export const getStakedTokens = async (
+//   contractAddress: string,
+//   account: string,
+//   asset: string,
+//   tokenId: number
+// ): Promise<number> => {
+//   const provider = getProvider();
+//   const contract = getContract(contractAddress, StakerABI); // Use StakerABI
+
+//   try {
+//     const stakedAmount = await contract.stakings(account, asset, tokenId);
+//     return stakedAmount.toNumber(); // Convert BigNumber to normal number
+//   } catch (error) {
+//     console.error("Error fetching staked tokens:", error);
+//     throw new Error("Unable to fetch staked tokens");
+//   }
+// };

@@ -1,7 +1,7 @@
 import { Alchemy, Network } from "alchemy-sdk";
-import { CONTRACTS } from "../constants/contracts";
-import { formatNFTData } from "../formatters/nftFormatters";
-import { CollectionsState } from "../../types/components/nft";
+import { CONTRACTS } from "../utils/constants/contracts";
+import { formatNFTData } from "../utils/formatters/nftFormatters";
+import { CollectionsState } from "../types/components/nft";
 
 /**
  * Creates an Alchemy SDK instance with the specified API key and network.
