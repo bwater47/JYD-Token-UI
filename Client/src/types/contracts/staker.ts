@@ -12,7 +12,7 @@ export type ContractAddress =
   | "0x2C173A97ED9beC4b292c7786811510268fd5e170"
   | "0x564AEd71080D74b4550baD82DC0BaA12737DCB64";
 
-export interface IStakerContract {
+export type StakerContractWithSigner = ethers.Contract & {
   getAssetMetadata(
     addresses: string[],
     tokenIds: number[]
@@ -46,6 +46,4 @@ export interface IStakerContract {
     asset: string[],
     tokenIds: number[]
   ): Promise<ethers.ContractTransaction>;
-}
-
-export type StakerContractWithSigner = ethers.Contract & IStakerContract;
+};

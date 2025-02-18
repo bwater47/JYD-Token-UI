@@ -4,8 +4,8 @@ import { useMetaMask } from "./useMetaMask";
 import { CONTRACTS } from "../utils/constants/contracts";
 import { NFTMetadata } from "../types/components/nft";
 import { StakedNFT, TransactionState } from "../types/components/staking";
+import { ContractAddress } from "../types/contracts/staker";
 import { STAKER_ABI } from "../utils/constants/abis";
-import { ContractAddress } from "../contracts/StakerContract";
 import { StakerContract } from "../contracts/StakerContract";
 
 type StakedNFTResult = {
