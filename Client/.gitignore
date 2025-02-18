@@ -26,7 +26,6 @@ dist-ssr
 
 # Environment
 .env
-.env.dev
 .env.development
 .env.stage
 .env.prod
