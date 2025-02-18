@@ -1,4 +1,3 @@
-// StakerContract.ts
 import { ethers } from "ethers";
 import { StakerABI } from "../abis/StakerABI";
 

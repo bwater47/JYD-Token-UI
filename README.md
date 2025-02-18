@@ -25,8 +25,9 @@ A Web3 interface for interacting with Junkyard Dogs NFT collections, built with 
       - common/          # Shared components
         - Login.tsx
       - features/NFT/    # NFT-related components
-        - NFTCard.tsx
         - NFTGallery.tsx
+        - UnstakedNFTList.tsx
+        - StakedNFTList.tsx
       - layout/          # Layout components
         - Footer.tsx
         - Header.tsx
@@ -35,8 +36,10 @@ A Web3 interface for interacting with Junkyard Dogs NFT collections, built with 
     - hooks/            # Custom React hooks
       - useMetaMask.tsx
       - useNFTs.tsx
+      - useStaking.tsx
     - pages/           # Page components
       - Home.tsx
+      - Staking.tsx
     - services/        # External integrations
       - alchemyService.ts
       - etherService.ts
@@ -45,21 +48,42 @@ A Web3 interface for interacting with Junkyard Dogs NFT collections, built with 
         - common/
           - Login.css
         - features/NFT/
-          - NFTCard.css
           - NFTGallery.css
+          - UnstakedNFTList.css
+          - StakedNFTList.css
         - layout/
           - Footer.css
           - Header.css
-      - Theme.css     # Global theme styles
+      - UI/           # UI-specific styles
+        - features/
+          - NFTCard.css
+        - modals/
+          - LoginModal.css
+        - index.css
+        - Theme.css   # Global-specific styles
+    - types/          # TypeScript type definitions
+      - components/   # Component-specific types
+        - nft.ts
+        - staking.ts
+    - UI/            # UI Components and features
+      - features/    # Feature-specific UI components
+        - NFTCard.tsx
+      - modals/      # Modal components
+        - LoginModal.tsx
     - utils/
       - constants/    # Application constants
+        - abis.ts    # Contract ABIs
         - contracts.ts
       - formatters/   # Formatting utilities
         - nftFormatters.ts
-  - .env.dev         # Development environment variables
+        - helpers.tsx
+  - .env.development # Development environment variables
   - .env.prod        # Production environment variables
   - .env.stage       # Staging environment variables
+  - index.html       # Root HTML file
   - package.json     # Project dependencies and scripts
+  - tsconfig.json    # TypeScript configuration
+  - vite.config.ts   # Vite configuration
 
 ### Key Directories
 - `/abis`: Smart contract ABIs for blockchain interaction
@@ -68,6 +92,8 @@ A Web3 interface for interacting with Junkyard Dogs NFT collections, built with 
 - `/hooks`: Custom React hooks for state management and business logic
 - `/services`: External service integrations (Alchemy, Ethereum)
 - `/styles`: CSS modules organized to mirror component structure
+- `/types`: TypeScript type definitions organized by feature
+- `/UI`: Reusable UI components and features
 - `/utils`: Helper functions, constants, and formatting utilities
 
 ## Installation
