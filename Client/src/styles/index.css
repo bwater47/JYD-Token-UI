@@ -1,0 +1,59 @@
+@import "./components/common/Login.css";
+@import "./components/features/NFT/NFTGallery.css";
+@import "./components/layout/Footer.css";
+@import "./components/layout/Header.css";
+@import "./UI/features/NFTCard.css";
+@import "./UI/modals/LoginModal.css";
+
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --black: #000000;
+  --surface1: #131313;
+  --surface1Hovered: rgba(24, 24, 24, 1);
+  --surface2: #1b1b1b;
+  --surface2Hovered: rgba(36, 36, 36, 1);
+  --surface3: rgba(255, 255, 255, 0.12);
+  --surface3Solid: #393939;
+  --surface3Hovered: rgba(255, 255, 255, 0.16);
+  --surface4: rgba(255, 255, 255, 0.2);
+  --neutral1: var(--white);
+  --neutral2: #9b9b9b;
+  --neutral3: #5e5e5e;
+  --accent1: #fc72ff;
+  --accent1Hovered: #fd3cfe;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html,
+body,
+#root {
+  background: var(--surface1);
+  color: var(--neutral1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 72px 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}

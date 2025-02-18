@@ -1,0 +1,29 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --surface1: #131313;
+    --surface1Hovered: rgba(24, 24, 24, 1);
+    --surface2: #1b1b1b;
+    --surface2Hovered: rgba(36, 36, 36, 1);
+    --surface3: rgba(255, 255, 255, 0.12);
+    --surface3Solid: #393939;
+    --surface3Hovered: rgba(255, 255, 255, 0.16);
+    --surface4: rgba(255, 255, 255, 0.2);
+    --neutral1: var(--white);
+    --neutral2: #9b9b9b;
+    --neutral3: #5e5e5e;
+    --accent1: #fc72ff;
+    --accent1Hovered: #fd3cfe;
+    --statusSuccess: #21c95e;
+    --statusWarning: #ffbf17;
+    --statusCritical: #ff5f52;
+  }
+}
+
+/* Light theme - if needed later */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Light theme variables would go here */
+  }
+}
