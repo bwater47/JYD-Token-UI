@@ -7,6 +7,10 @@ import { StakedNFT, TransactionState } from "../types/components/staking";
 import { ContractAddress } from "../types/contracts/staker";
 import { STAKER_ABI } from "../utils/constants/abis";
 import { StakerContract } from "../contracts/StakerContract";
+import {
+  getTransactionKey,
+  createUpdatedTransactionState,
+} from "../utils/helpers";
 
 type StakedNFTResult = {
   contractAddress: ContractAddress;
@@ -22,10 +26,6 @@ export const useStaking = () => {
     {}
   );
 
-  // Helper function to generate transaction key
-  const getTransactionKey = (contractAddress: string, tokenId: number) =>
-    `${contractAddress}-${tokenId}`;
-
   // Update transaction state helper
   const updateTransactionState = (
     contractAddress: string,
@@ -33,13 +33,9 @@ export const useStaking = () => {
     state: { loading?: boolean; error?: string | null }
   ) => {
     const key = getTransactionKey(contractAddress, tokenId);
-    setTransactionStates((prev) => ({
-      ...prev,
-      [key]: {
-        loading: state.loading ?? prev[key]?.loading ?? false,
-        error: state.error ?? prev[key]?.error ?? null,
-      },
-    }));
+    setTransactionStates((prev) =>
+      createUpdatedTransactionState(prev, key, state)
+    );
   };
 
   // Fetch initial staked NFTs
